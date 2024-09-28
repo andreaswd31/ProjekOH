@@ -4,7 +4,7 @@ pygame.init()
 
 # Create Window/Display
 
-width, height = 800, 600
+width, height = 1280, 720
 window = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Baloon Games')
 
@@ -22,7 +22,10 @@ while start:
             pygame.quit()
 
     # apply logic
-    window.fill((255, 0, 0))
+    window.fill((255, 255, 255))
+    font =pygame.font.Font('../Resources/Marcellus-Regular.ttf',100)
+    text = font.render('Baloon Games', True, (50, 50, 50))
+    window.blit(text, (350,300))
 
     #update Display
     pygame.display.update()

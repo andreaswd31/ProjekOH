@@ -15,6 +15,10 @@ clock = pygame.time.Clock()
 #load image
 imgBackground = pygame.image.load('../Resources/BackgroundBlue.jpg').convert()
 imgbalon = pygame.image.load('../Resources/balon.png').convert_alpha()
+#imgbalon = pygame.transform.rotate(imgbalon, 90)
+imgbalon = pygame.transform.rotozoom(imgbalon, 0,0.3)
+#imgbalon = pygame.transform.flip(imgbalon, True, False)
+
 
 
 #main loop
@@ -27,6 +31,9 @@ while start:
             pygame.quit()
 
     # apply logic
+    #imgbalon = pygame.transform.scale(imgbalon, (50,100))
+    #imgbalon = pygame.transform.smoothscale(imgbalon, (50, 100))
+
     window.blit(imgBackground, (0, 0))
     window.blit(imgbalon, (0,0))
 

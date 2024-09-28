@@ -1,4 +1,7 @@
 import pygame
+import cv2
+import numpy as np
+
 
 pygame.init()
 
@@ -12,6 +15,11 @@ pygame.display.set_caption('Baloon Games')
 fps = 30
 clock = pygame.time.Clock()
 
+#Webcam
+cap =cv2.VideoCapture(0)
+cap.set(3, 1280) #witdh
+cap.set(4, 720) #height
+
 #main loop
 start = True
 while start:
@@ -22,7 +30,14 @@ while start:
             pygame.quit()
 
     # apply logic
-    window.fill((255, 0, 0))
+
+    #opencv
+    success, img = cap.read()
+    imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    imgRGB = np.rot90(imgRGB)
+    frame = pygame.surfarray.make_surface(imgRGB).convert()
+    frame = pygame.transform.flip(frame, True, False)
+    window.blit(frame, (0, 0))
 
     #update Display
     pygame.display.update()
